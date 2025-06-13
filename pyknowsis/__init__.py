@@ -71,7 +71,7 @@ def create_datapoint(datapoint_json):
 
 def create_asset_sentiment(asset_sentiment_json):
     name = asset_sentiment_json.get('name')
-    identifier = asset_sentiment_json.get('identifer')
+    identifier = asset_sentiment_json.get('identifier')
 
     startdate = datetime.strptime(
         asset_sentiment_json.get('startdate'), "%Y-%m-%dT%H:%M:%S")
@@ -112,7 +112,7 @@ class AssetPricing(object):
 
 def create_asset_pricing(asset_pricing_json):
     name = asset_pricing_json.get('name')
-    identifier = asset_pricing_json.get('identifer')
+    identifier = asset_pricing_json.get('identifier')
 
     startdate = datetime.strptime(asset_pricing_json.get('startdate'),
                                   "%Y-%m-%dT%H:%M:%S")
@@ -196,7 +196,7 @@ class KnowsisClient(object):
         if pagesize:
             querystring['pagesize'] = pagesize
 
-        if pagesize > 100:
+        if pagesize and pagesize > 100:
             raise ValueError("Pagesize cannot be greater than 100")
 
         response = self._get_response_for_signed_request(
